@@ -5,7 +5,7 @@
 	<div>
 		<h3>Project Name: {{ project.projectName }}</h3>>
 		<h3>Project ID: {{ project.id }}</h3>
-		<a href="{{ url_for('updateproject', project_id=project.project_id) }} ">Update this movie</a>
+		<a href="{{ url_for('updateproject', project_id=project_id) }} ">Update this movie</a>
 	</div>
 {% endfor %}
 {% endblock %}
