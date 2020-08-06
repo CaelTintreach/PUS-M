@@ -12,3 +12,13 @@ class ProjectForm(FlaskForm):
     )
 	projectComplete = BooleanField('Completed?')
 	submit = SubmitField('Add Project')
+
+class UpdateProjectForm(FlaskForm):
+    projectName = StringField('Project Name',
+            validators = [
+                DataRequired(),
+                Length(min=1, max=100)
+            ]
+    )
+    projectComplete = BooleanField('Completed?')
+    submit = SubmitField('Add Project')

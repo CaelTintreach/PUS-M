@@ -1,10 +1,11 @@
 {% extends "layout.html" %}
 {% block body_content %}
 <h1>Welcome to the PEUS-M homepage.</h1>
-{% for project in projects %}
+{% for project in addedprojects %}
 	<div>
 		<h3>Project Name: {{ project.projectName }}</h3>>
-		<h3>{{ project.id }}</h3>
+		<h3>Project ID: {{ project.id }}</h3>
+		<a href="{{ url_for('updateproject', project_id=addedprojects.project_id) }} ">Update this movie</a>
 	</div>
 {% endfor %}
 {% endblock %}
