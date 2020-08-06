@@ -7,11 +7,11 @@ from application.forms import ProjectForm, UpdateProjectForm
 def addproject():
 	form = ProjectForm()
 	if form.validate_on_submit():
-		project = Projects(
+		projectData = Projects(
 			projectName=form.projectName.data,
 			projectComplete=form.projectComplete.data
 			)
-		db.session.add(project)
+		db.session.add(projectData)
 		db.session.commit()
 		return redirect(url_for('home'))
 	else:
