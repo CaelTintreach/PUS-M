@@ -1,7 +1,7 @@
 from application import db
 
 class Projects(db.Model):
-	project_id = db.Column(db.Integer, primary_key=True)
+	id = db.Column(db.Integer, primary_key=True)
 	projectName = db.Column(db.String(100), nullable=False, unique=True)
 	projectComplete = db.Column(db.Boolean, nullable=False, unique=False, default=False)
 

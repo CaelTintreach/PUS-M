@@ -26,13 +26,13 @@ def home():
 
 @app.route('/updateproject/<project_id>', methods=['GET', 'POST'])
 def updateproject(project_id):
-	project = Projects.query.filter_by(project_id = project_id).first()
+	project = Projects.query.filter_by(project_id = id).first()
 	form = UpdateProjectForm()
 	if form.validate_on_submit():
 		project.projectName = form.projectName.data
 		project.projectComplete = form.projectComplete.data
 		db.session.commit()
-		return redirect(url_for('home', project_id = project_id))
+		return redirect(url_for('home', project_id = id))
 	elif request.method == 'GET':
 		form.projectName.data = project.projectName
 		form.projectComplete.data = project.projectComplete
