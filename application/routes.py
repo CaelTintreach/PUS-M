@@ -9,7 +9,6 @@ def addproject():
 	if form.validate_on_submit():
 		projectData = Projects(
 			projectName=form.projectName.data,
-			projectComplete=form.projectComplete.data
 			)
 		db.session.add(projectData)
 		db.session.commit()
