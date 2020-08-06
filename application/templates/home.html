@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block body_content %}
+<h1>Welcome to the PEUS-M homepage.</h1>
+{% for project in projects %}
+	<div>
+		<p>{{ project.projectName }}</p>>
+		<p>{{ project.id }}</p>
+	</div>
+{% endfor %}
+{% endblock %}
