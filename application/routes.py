@@ -25,7 +25,7 @@ def adduserstory():
 		userstoryData = UserStories(
 			userstoryName=form.userstoryName.data,
 			userstoryDesc=form.userstoryDesc.data,
-			userstoryProject=projectID
+			ident=projectID
 			)
 		db.session.add(userstoryData)
 		db.session.commit()
