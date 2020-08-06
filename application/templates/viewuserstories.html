@@ -4,10 +4,10 @@
 	{% if posts %}
 		{% for post in posts %}
 			<div>
-				<h3>User Story Name: {{ post.userstoryName }}</h3>>
+				<h3>User Story Name: {{ post.userstoryName }}</h3>
 				<h3>User Story ID: {{ post.id }}</h3>
-				<h3>User Story Desc: {{ post.projectName }}</h3>>
-				<h3>User Story Complete Status: {{ post.id }}</h3>
+				<h3>User Story Desc: {{ post.userstoryDesc }}</h3>
+				<h3>Project ID: {{ post.userstoryProject }}</h3>
 				<a href="{{ url_for('updateuserstory', id=post.id) }} ">Update User Story</a>
 				<a href="{{ url_for('deleteuserstory', id=post.id) }} ">Delete User Story</a>
 			</div>
