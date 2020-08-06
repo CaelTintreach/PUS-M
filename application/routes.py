@@ -22,7 +22,7 @@ def addproject():
 @app.route('/home') #The homepage will display all projects currently in the database as well as their status. 
 def home():
     projectData = Projects.query.all()
-    return render_template('home.html', title='home', addedprojects=projectData)
+    return render_template('home.html', title='home', posts=projectData)
 
 @app.route('/updateproject/<project_id>', methods=['GET', 'POST'])
 def updateproject(project_id):
