@@ -20,12 +20,12 @@ def addproject():
 @app.route('/adduserstory', methods=['GET', 'POST'])
 def adduserstory():
 	form = UserStoriesForm()
-	userstoryProject=Projects.query.filter_by(id=form.userstoryProject.data).first()
+	projectID=Projects.query.filter_by(id=form.userstoryProject.data).first()
 	if form.validate_on_submit():
 		userstoryData = UserStories(
 			userstoryName=form.userstoryName.data,
 			userstoryDesc=form.userstoryDesc.data,
-			userstoryProject=userstoryProject
+			userstoryProject=projectID
 			)
 		db.session.add(userstoryData)
 		db.session.commit()
