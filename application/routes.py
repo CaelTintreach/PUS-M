@@ -8,7 +8,7 @@ def addproject():
 	form = ProjectForm()
 	if form.validate_on_submit():
 		projectData = Projects(
-			projectName=form.projectName.data,
+			projectName=form.projectName.data
 			)
 		db.session.add(projectData)
 		db.session.commit()
@@ -20,11 +20,12 @@ def addproject():
 @app.route('/adduserstory', methods=['GET', 'POST'])
 def adduserstory():
 	form = UserStoriesForm()
+	userstoryProject=Projects.query.filter_by(id=form.userstoryProject.data).first()
 	if form.validate_on_submit():
 		userstoryData = UserStories(
 			userstoryName=form.userstoryName.data,
 			userstoryDesc=form.userstoryDesc.data,
-			userstoryProject=Projects.query.filter_by(id=form.userstoryProject.data).first()
+			userstoryProject=userstoryProject
 			)
 		db.session.add(userstoryData)
 		db.session.commit()
