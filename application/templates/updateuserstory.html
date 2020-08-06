@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% block body_content %}
+<h1>Create a user story here.</h1>
+<div class='form'>
+	<form method='POST' action=''>
+		{{ form.hidden_tag() }}
+		<div class="form-group">
+			{{ form.userstoryName.label }}
+			{{ form.userstoryName }}
+			{% if form.userstoryName.errors %}
+			<div class="error">
+				{% for error in form.userstoryName.errors %}
+					<span>{{ error }}</span>
+				{% endfor %}
+			</div>
+			{% endif %}
+		</div>
+		<div class="form-group">
+			{{ form.userstoryDesc.label }}
+			{{ form.userstoryDesc }}
+			{% if form.userstoryDesc.errors %}
+			<div class="error">
+				{% for error in form.userstoryDesc.errors %}
+					<span>{{ error }}</span>
+				{% endfor %}
+			</div>
+			{% endif %}
+		</div>
+		<br>
+		<div class="form-group">
+			{{ form.userstoryComplete.label }}
+			{{ form.userstoryComplete }}
+		</div>
+		<br>
+		<div>
+		{{ form.submit }}
+		</div>
+		</form>
+	</div>
+{% endblock %}

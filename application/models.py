@@ -10,3 +10,9 @@ class Projects(db.Model):
 			'Project ID: ', self.id, '\r\n',
 			'Project Name: ', self.projectName, '\r\n'
 		])
+
+class UserStories(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	userstoryName = db.Column(db.String(100), nullable=False, unique=True)
+	userstoryDesc = db.Column(db.String(100), nullable=False, unique=True)
+	userstoryComplete = db.Column(db.Boolean, nullable=False, unique=False, default=False)
