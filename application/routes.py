@@ -42,3 +42,9 @@ def updateproject(id):
 		form.projectComplete.data = updateitem.projectComplete
 	return render_template('updateproject.html', title='Update Project', form = form)
 
+@app.route('/deleteproject/<id>', methods=['GET', 'POST'])
+def deleteproject(id):
+	deleteitem = Projects.query.filter_by(id = id).first()
+	db.session.delete(deleteitem)
+	db.session.commit()
+	return redirect(url_for('home'))
