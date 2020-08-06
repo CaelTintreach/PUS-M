@@ -26,11 +26,13 @@
 			</div>
 			{% endif %}
 		</div>
-		<br>
-		<div class="form-group">
-			{{ form.userstoryComplete.label }}
-			{{ form.userstoryComplete }}
-		</div>
+			{{ form.userstoryProject.label }}
+			{{ form.userstoryProject }}
+			{% if form.userstoryProject.errors %}
+			<div class="error">
+				{% for error in form.userstoryProject.errors %}
+					<span>{{ error }}</span>
+				{% endfor %}
 		<br>
 		<div>
 		{{ form.submit }}

@@ -20,25 +20,28 @@ class UpdateProjectForm(FlaskForm):
                 Length(min=1, max=100)
             ]
     )
-    projectComplete = BooleanField('Completed?')
     submit = SubmitField('Add Project')
 
 class UserStoriesForm(FlaskForm):
-    userstoryName = StringField('Project Name',
+    userstoryName = StringField('User Story Name',
             validators = [
                 DataRequired(),
                 Length(min=1, max=100)
             ]
     )
 
-    userstoryDesc = StringField('Project Name',
+    userstoryDesc = StringField('User Story Desc',
             validators = [
                 DataRequired(),
                 Length(min=1, max=100)
             ]
     )
 
-    userstoryComplete = BooleanField('Completed?')
+    userstoryProject = IntegerField('Input Numeric ID Of Project',
+            validators = [
+                DataRequired(),
+            ]
+    )
     submit = SubmitField('Add User Story')
 
 class UpdateUserStoriesForm(FlaskForm):
@@ -53,6 +56,12 @@ class UpdateUserStoriesForm(FlaskForm):
             validators = [
                 DataRequired(),
                 Length(min=1, max=100)
+            ]
+    )
+
+    userstoryProject = IntegerField('Input Numeric ID Of Project',
+            validators = [
+                DataRequired(),
             ]
     )
 
