@@ -7,6 +7,6 @@ class Projects(db.Model):
 
 	def __repr__(self):
 		return ''.join([
-			'Project ID: ', self.project_id, '\r\n',
+			'Project ID: ', self.id, '\r\n',
 			'Project Name: ', self.projectName, '\r\n'
 		])
