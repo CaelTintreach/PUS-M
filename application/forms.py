@@ -38,7 +38,7 @@ class UserStoriesForm(FlaskForm):
             ]
     )
 
-    projectComplete = BooleanField('Completed?')
+    userstoryComplete = BooleanField('Completed?')
     submit = SubmitField('Add User Story')
 
 class UpdateUserStoriesForm(FlaskForm):
@@ -56,5 +56,5 @@ class UpdateUserStoriesForm(FlaskForm):
             ]
     )
 
-    projectComplete = BooleanField('Completed?')
+    userstoryComplete = BooleanField('Completed?')
     submit = SubmitField('Add User Story')
