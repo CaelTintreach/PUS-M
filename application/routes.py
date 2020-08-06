@@ -28,15 +28,15 @@ def viewprojects():
     projectData = Projects.query.all()
     return render_template('viewprojects.html', title='View Projects', posts=projectData)
 
-@app.route('/updateproject/<project_id>', methods=['GET', 'POST'])
-def updateproject(project_id):
-	project = Projects.query.filter_by(project_id = id).first()
+@app.route('/updateproject/<id>', methods=['GET', 'POST'])
+def updateproject(id):
+	project = Projects.query.filter_by(id = id).first()
 	form = UpdateProjectForm()
 	if form.validate_on_submit():
 		project.projectName = form.projectName.data
 		project.projectComplete = form.projectComplete.data
 		db.session.commit()
-		return redirect(url_for('home', project_id = id))
+		return redirect(url_for('home', id = id))
 	elif request.method == 'GET':
 		form.projectName.data = project.projectName
 		form.projectComplete.data = project.projectComplete
