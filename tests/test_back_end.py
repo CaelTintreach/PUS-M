@@ -68,7 +68,7 @@ class TestViews(TestBase):
 
 	def test_update_userstory(self):
 		with self.client:
-			response = self.client.post(('/updateuserstory/1'), data=dict(userstoryName = "Two Story", userstoryDesc= "Two Story Desc", userstoryproject=1), follow_redirects=True)
+			response = self.client.post(('/updateuserstory/1'), data=dict(userstoryName = "Two Story", userstoryDesc= "Two Story Desc"), follow_redirects=True)
 			self.assertIn(b"Two Story", response.data)
 			self.assertNotIn(b"New Story", response.data)
 
@@ -82,7 +82,7 @@ class TestViews(TestBase):
 
 	def test_adding_userstory(self):
 		with self.client:
-			response = self.client.post(url_for('adduserstory'), data=dict(userstoryName = "New Story", userstoryDesc= "New Story Desc", userstoryproject=1), follow_redirects=True)
+			response = self.client.post(url_for('adduserstory'), data=dict(userstoryName = "New Story", userstoryDesc= "New Story Desc", userstoryproject="1"), follow_redirects=True)
 			self.assertIn(b"New Story", response.data)
 
 	def test_delete_project(self):
