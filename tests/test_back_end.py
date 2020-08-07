@@ -59,6 +59,14 @@ class TestViews(TestBase):
 	
 	def test_update_project(self):
 		with self.client:
-			response = self.client.post(url_for('updateproject/1'), data=dict(projectName = "Retest", follow_redirects=True))
+			response = self.client.post(url_for('/updateproject/1'), data=dict(projectName = "Retest", follow_redirects=True))
 			self.assertIn(b"Retest", response.data)
 			self.assertNotIn(b"Test Project", response.data)
+
+	def test_project_view_access(self):
+		response = self.client.get(url_for('viewprojects'))
+		self.assertEqual(response.status_code, 200)
+
+	def test_userstory_view_access(self):
+		response = self.client.get(url_for('viewuserstories'))
+		self.assertEqual(response.status_code, 200)
