@@ -78,6 +78,10 @@ def updateproject(id):
 @app.route('/deleteproject/<id>', methods=['GET', 'POST'])
 def deleteproject(id):
 	deleteitem = Projects.query.filter_by(id = id).first()
+	userstoriesDelete = UserStories.query.filter_by(id = id).all()
+	for userstories in userstoriesDelete:
+		db.session.delete(userstories)
+		db.session.commit()
 	db.session.delete(deleteitem)
 	db.session.commit()
 	return redirect(url_for('viewprojects'))
