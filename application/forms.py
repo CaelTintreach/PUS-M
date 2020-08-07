@@ -45,14 +45,14 @@ class UserStoriesForm(FlaskForm):
     submit = SubmitField('Add User Story')
 
 class UpdateUserStoriesForm(FlaskForm):
-    userstoryName = StringField('Project Name',
+    userstoryName = StringField('User Story Name',
             validators = [
                 DataRequired(),
                 Length(min=1, max=100)
             ]
     )
 
-    userstoryDesc = StringField('Project Name',
+    userstoryDesc = StringField('User Story Name',
             validators = [
                 DataRequired(),
                 Length(min=1, max=100)
