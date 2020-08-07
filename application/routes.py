@@ -12,7 +12,7 @@ def addproject():
 			)
 		db.session.add(projectData)
 		db.session.commit()
-		return redirect(url_for('home'))
+		return redirect(url_for('viewprojects'))
 	else:
 		print(form.errors)
 	return render_template('addproject.html', title='Add Project', form=form)
@@ -29,7 +29,7 @@ def adduserstory():
 			)
 		db.session.add(userstoryData)
 		db.session.commit()
-		return redirect(url_for('home'))
+		return redirect(url_for('viewuserstories'))
 	else:
 		print(form.errors)
 	return render_template('adduserstory.html', title='Add User Story', form=form)
@@ -57,7 +57,7 @@ def updateuserstory(id):
 		updateitem.userstoryName = form.userstoryName.data
 		updateitem.userstoryDesc = form.userstoryDesc.data
 		db.session.commit()
-		return redirect(url_for('home', id = id))
+		return redirect(url_for('viewuserstories', id = id))
 	elif request.method == 'GET':
 		form.userstoryName.data = updateitem.userstoryName
 		form.userstoryDesc.data = updateitem.userstoryDesc
@@ -70,7 +70,7 @@ def updateproject(id):
 	if form.validate_on_submit():
 		updateitem.projectName = form.projectName.data
 		db.session.commit()
-		return redirect(url_for('home', id = id))
+		return redirect(url_for('viewprojects', id = id))
 	elif request.method == 'GET':
 		form.projectName.data = updateitem.projectName
 	return render_template('updateproject.html', title='Update Project', form = form)
@@ -80,11 +80,11 @@ def deleteproject(id):
 	deleteitem = Projects.query.filter_by(id = id).first()
 	db.session.delete(deleteitem)
 	db.session.commit()
-	return redirect(url_for('home'))
+	return redirect(url_for('viewprojects'))
 
 @app.route('/deleteuserstory/<id>', methods=['GET', 'POST'])
 def deleteuserstory(id):
 	deleteitem = UserStories.query.filter_by(id = id).first()
 	db.session.delete(deleteitem)
 	db.session.commit()
-	return redirect(url_for('home'))
+	return redirect(url_for('viewuserstories'))

@@ -56,8 +56,18 @@ class TestViews(TestBase):
 			response = self.client.get(url_for('viewprojects'))
 			self.assertIn(b"Test Project", response.data)
 
+	def test_project_add_page(self):
+		with self.client:
+			response = self.client.get(url_for('addproject'))
+			self.assertIn(b"Create", response.data)
+
 	def test_userstory_view(self):
 		with self.client:
 			response = self.client.get(url_for('viewuserstories'))
 			self.assertIn(b"Test Story", response.data)
 	
+	def test_update_project(self):
+		with self.client:
+			response = self.client.post(url_for('/updateproject/1'), data=dict(projectName = "Retest", follow_redirects=True))
+
+
