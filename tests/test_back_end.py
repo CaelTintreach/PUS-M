@@ -69,5 +69,5 @@ class TestViews(TestBase):
 	def test_update_project(self):
 		with self.client:
 			response = self.client.post(url_for('/updateproject/1'), data=dict(projectName = "Retest", follow_redirects=True))
-
-
+			self.assertIn(b"Retest", response.data)
+			self.assertNotIn(b"Test Project", response.data)
