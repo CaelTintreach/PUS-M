@@ -59,5 +59,5 @@ class TestViews(TestBase):
 	def test_userstory_view(self):
 		with self.client:
 			response = self.client.get(url_for('viewuserstories'))
-			self.assertIn(b"Test Story", "Test Desc", response.data)
+			self.assertIn(b"Test Story", response.data)
 	
