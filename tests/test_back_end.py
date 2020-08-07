@@ -48,9 +48,6 @@ class TestBase(TestCase):
 class TestViews(TestBase):
 
 	def test_homepage_view(self):
-		"""
-		Test that homepage is accessible without login
-		"""
 		response = self.client.get(url_for('home'))
 		self.assertEqual(response.status_code, 200)
 
@@ -58,3 +55,10 @@ class TestViews(TestBase):
 		with self.client:
 			response = self.client.get(url_for('viewprojects'))
 			self.assertIn(b"Test Project", response.data)
+
+	def test_userstory_view(self):
+		with self.client:
+			response = self.client.get(url_for('viewprojects'))
+			self.assertIn(b"Test Story", "Test Desc", 1, response.data)
+	
+	
