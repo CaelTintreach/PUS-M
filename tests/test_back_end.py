@@ -20,10 +20,6 @@ class TestBase(TestCase):
 		return app
 
 	def setUp(self):
-		"""
-		Will be called before every test
-		"""
-		# ensure there is no data in the test database when the test starts
 		db.session.commit()
 		db.drop_all()
 		db.create_all()
@@ -32,16 +28,11 @@ class TestBase(TestCase):
 
 		userstory = UserStories(userstoryName = "Test Story", userstoryDesc = "Test Desc", projectident = 1)
 
-		# save users to database
 		db.session.add(project)
 		db.session.add(userstory)
 		db.session.commit()
 
 	def tearDown(self):
-		"""
-		Will be called after every test
-		"""
-
 		db.session.remove()
 		db.drop_all()
 
@@ -68,6 +59,6 @@ class TestViews(TestBase):
 	
 	def test_update_project(self):
 		with self.client:
-			response = self.client.post(url_for('/updateproject/1'), data=dict(projectName = "Retest", follow_redirects=True))
+			response = self.client.post(url_for('updateproject/1'), data=dict(projectName = "Retest", follow_redirects=True))
 			self.assertIn(b"Retest", response.data)
 			self.assertNotIn(b"Test Project", response.data)
