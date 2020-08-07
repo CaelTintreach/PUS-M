@@ -9,8 +9,6 @@ from os import getenv
 class TestBase(TestCase):
 
 	def create_app(self):
-
-		# pass in configurations for test database
 		config_name = 'testing'
 		app.config.update(SQLALCHEMY_DATABASE_URI=getenv('TEST_DB_URI'),
 				SECRET_KEY=getenv('TEST_SECRET_KEY'),
@@ -67,6 +65,12 @@ class TestViews(TestBase):
 			response = self.client.post(('/updateproject/1'), data=dict(projectName = "Retest"), follow_redirects=True)
 			self.assertIn(b"Retest", response.data)
 			self.assertNotIn(b"Test Project", response.data)
+
+	def test_update_userstory(self):
+		with self.client:
+			response = self.client.post(('/updateuserstory/1'), data=dict(userstoryName = "Two Story", userstoryDesc= "Two Story Desc", userstoryproject=1), follow_redirects=True)
+			self.assertIn(b"Two Story", response.data)
+			self.asssertNotIn(b"New Story", response.data)
 
 	def test_project_view_access(self):
 		response = self.client.get(url_for('viewprojects'))
