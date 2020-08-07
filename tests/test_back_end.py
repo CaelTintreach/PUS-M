@@ -59,12 +59,12 @@ class TestViews(TestBase):
 
 	def test_adding_project(self):
 		with self.client:
-			response = self.client.post(url_for('addproject'), data=dict(projectName = "New Project", follow_redirects=True))
+			response = self.client.post(url_for('addproject'), data=dict(projectName = "New Project"), follow_redirects=True)
 			self.assertIn(b"New Project", response.data)
 
 	def test_update_project(self):
 		with self.client:
-			response = self.client.post(('/updateproject/1'), data=dict(projectName = "Retest", follow_redirects=True))
+			response = self.client.post(('/updateproject/1'), data=dict(projectName = "Retest"), follow_redirects=True)
 			self.assertIn(b"Retest", response.data)
 			self.assertNotIn(b"Test Project", response.data)
 
@@ -75,3 +75,8 @@ class TestViews(TestBase):
 	def test_userstory_view_access(self):
 		response = self.client.get(url_for('viewuserstories'))
 		self.assertEqual(response.status_code, 200)
+
+	def test_adding_userstory(self):
+		with self.client:
+			response = self.client.post(url_for('adduserstory'), data=dict(userstoryName = "New Story", userstoryDesc= "New Story Desc", projectIdent=1), follow_redirects=True)
+			self.assertIn(b"New Project", response.data)
