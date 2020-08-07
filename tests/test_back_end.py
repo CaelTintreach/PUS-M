@@ -82,7 +82,7 @@ class TestViews(TestBase):
 
 	def test_adding_userstory(self):
 		with self.client:
-			response = self.client.post(url_for('adduserstory'), data=dict(userstoryName = "New Story", userstoryDesc= "New Story Desc", userstoryproject="1"), follow_redirects=True)
+			response = self.client.post(url_for('adduserstory'), data=dict(userstoryName = "New Story", userstoryDesc= "New Story Desc", userstoryProject="1"), follow_redirects=True)
 			self.assertIn(b"New Story", response.data)
 
 	def test_delete_project(self):
