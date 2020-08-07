@@ -52,7 +52,7 @@ class UpdateUserStoriesForm(FlaskForm):
             ]
     )
 
-    userstoryDesc = StringField('User Story Name',
+    userstoryDesc = StringField('User Story Description',
             validators = [
                 DataRequired(),
                 Length(min=1, max=100)
