@@ -70,7 +70,7 @@ class TestViews(TestBase):
 		with self.client:
 			response = self.client.post(('/updateuserstory/1'), data=dict(userstoryName = "Two Story", userstoryDesc= "Two Story Desc", userstoryproject=1), follow_redirects=True)
 			self.assertIn(b"Two Story", response.data)
-			self.asssertNotIn(b"New Story", response.data)
+			self.assertNotIn(b"New Story", response.data)
 
 	def test_project_view_access(self):
 		response = self.client.get(url_for('viewprojects'))
