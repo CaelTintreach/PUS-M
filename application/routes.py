@@ -57,7 +57,7 @@ def updateuserstory(id):
 		updateitem.userstoryName = form.userstoryName.data
 		updateitem.userstoryDesc = form.userstoryDesc.data
 		db.session.commit()
-		return redirect(url_for('viewuserstories', id = id))
+		return redirect(url_for('home', id = id))
 	elif request.method == 'GET':
 		form.userstoryName.data = updateitem.userstoryName
 		form.userstoryDesc.data = updateitem.userstoryDesc
