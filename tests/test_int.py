@@ -49,7 +49,6 @@ class TestProjectView(TestBase):
 
 		assert url_for('viewprojects') in self.driver.current_url
 
-		
 	if __name__ == '__main__':
 		unittest.main(port=5000)
 
@@ -61,6 +60,33 @@ class TestUserStoryView(TestBase):
 
 		assert url_for('viewuserstories') in self.driver.current_url		
 
+	if __name__ == '__main__':
+		unittest.main(port=5000)
+
+class TestAllButtons(TestBase):
+
+	def test_allbuttons(self):
+		self.driver.find_element_by_xpath("/html/body/div/a[1]").click()
+		time.sleep(1)
+		self.driver.find_element_by_xpath("/html/body/div/a[2]").click()
+		time.sleep(1)
+		self.driver.find_element_by_xpath("/html/body/div/a[3]").click()
+		time.sleep(1)
+		self.driver.find_element_by_xpath("/html/body/div/a[4]").click()
+		time.sleep(1)
+		self.driver.find_element_by_xpath("/html/body/div/a[5]").click()
+		time.sleep(1)
+		assert url_for('viewuserstories') in self.driver.current_url
+
+	if __name__ == '__main__':
+		unittest.main(port=5000)
+
+class TestAddProject(TestBase):
+	def test_addproject(self):
+		self.driver.find_element_by_xpath("/html/body/div/a[2]").click()
+		self.driver.find_element_by_xpath("/html/body/div[2]/form/div[1]/input").send_keys(test_project_name)
+		self.driver.find_element_by_xpath("/html/body/div[2]/form/div[2]/input").click()
+		assert url_for('viewprojects') in self.driver.current_url
 
 	if __name__ == '__main__':
 		unittest.main(port=5000)
