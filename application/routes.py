@@ -71,8 +71,8 @@ def updateproject(id):
 		updateitem.projectName = form.projectName.data
 		db.session.commit()
 		return redirect(url_for('viewprojects', id = id))
-	#elif request.method == 'GET':
-		#form.projectName.data = updateitem.projectName
+	elif request.method == 'GET':
+		form.projectName.data = updateitem.projectName
 	return render_template('updateproject.html', title='Update Project', form = form)
 
 @app.route('/deleteproject/<id>', methods=['GET', 'POST'])
