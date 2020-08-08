@@ -49,6 +49,18 @@ class TestProjectView(TestBase):
 
 		assert url_for('viewprojects') in self.driver.current_url
 
+		
+	if __name__ == '__main__':
+		unittest.main(port=5000)
+
+class TestUserStoryView(TestBase):
+
+	def test_userstoryview(self):
+		self.driver.find_element_by_xpath("/html/body/div/a[5]").click()
+		time.sleep(1)
+
+		assert url_for('viewuserstories') in self.driver.current_url		
+
 
 	if __name__ == '__main__':
 		unittest.main(port=5000)
